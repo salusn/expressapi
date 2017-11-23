@@ -3,6 +3,14 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 
+var mongoose   = require('mongoose');
+var mongoDB = 'mongodb://127.0.0.1/expressapi';
+var db = mongoose.connection;
+// mongoose.connect(mongoDB, {
+//   useMongoClient: true
+// });
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
