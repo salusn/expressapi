@@ -41,24 +41,24 @@ router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
 
-// router.route('/bears')
+router.route('/bears')
 
-//     // create a bear (accessed at POST http://localhost:8080/api/bears)
-//     .post(function(req, res) {
+    // create a bear (accessed at POST http://localhost:8080/api/bears)
+    .post(function(req, res) {
     
-//         var bear = new Bear({
-//         	name : req.body.name,        
-//             value : req.body.value
-//         	}); 
+        var bear = new Bear({
+        	name : req.body.name,        
+            value : req.body.value
+        	}); 
         
-//         bear.save(function(err) {
-//             if (err)
-//                 res.send(err);
+        bear.save(function(err) {
+            if (err)
+                res.send(err);
 
-//             res.json({ message: 'Bear created!' });
-//         });
+            res.json({ message: 'Bear created!' });
+        });
 
-//     });
+    });
 
 
 app.use('/api', router);
