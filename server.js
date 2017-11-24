@@ -50,7 +50,7 @@ router.route('/bears')
         	name : req.body.name,        
             value : req.body.value
         	}); 
-        
+
         bear.save(function(err) {
             if (err)
                 res.send(err);
@@ -58,7 +58,18 @@ router.route('/bears')
             res.json({ message: 'Bear created!' });
         });
 
+    })
+
+    // get all the bears (accessed at GET http://localhost:8080/api/bears)
+    .get(function(req, res) {
+        Bear.find(function(err, bears) {
+            if (err)
+                res.send(err);
+
+            res.json(bears);
+        });
     });
+
 
 
 app.use('/api', router);
