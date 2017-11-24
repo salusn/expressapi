@@ -79,6 +79,17 @@ router.route('/bears/:bear_id')
                 res.send(err);
             res.json(bear);
         });
+    })
+
+    .put(function(req, res) {
+
+        // use our bear model to find the bear we want
+        Bear.findByIdAndUpdate(req.params.bear_id,req.body, function(err, bear) {
+
+            if (err)
+                res.send(err);
+                 res.json({ message: 'Bear updated!' });
+        });
     });
 
 app.use('/api', router);
