@@ -90,7 +90,19 @@ router.route('/bears/:bear_id')
                 res.send(err);
                  res.json({ message: 'Bear updated!' });
         });
+    })
+
+    .delete(function(req, res) {
+        Bear.remove({
+            _id: req.params.bear_id
+        }, function(err, bear) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Successfully deleted' });
+        });
     });
+
 
 app.use('/api', router);
 
